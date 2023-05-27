@@ -1,5 +1,6 @@
-from markupsafe import escape
-from flask import Flask
+
+from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
@@ -10,8 +11,8 @@ def hello():
 
 
 
-@app.route('/user/<username>')
-def show_user_profile(username):
-    # show the user profile for that user
-    return f'<h1>Hello, {escape(username)}!</h1>' 
 
+@app.route('/user/')
+@app.route('/user/<username>')
+def show_user_profile(username=None):
+    return render_template('user.html', name=username)
