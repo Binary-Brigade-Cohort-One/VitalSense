@@ -15,7 +15,7 @@ Once you have cloned the repo locally. Go into the `VitalSense` project folder a
 First, you want to set up the virtual environment with the following command in the terminal (*I use gitbash as my termial*)[^git].
 
 ``` terminal
-> py -3 -m venv .venv
+py -3 -m venv .venv
 ```
 
 this should result in a new folder being created in the main directory called `.venv`. Now to use the virtual environment run the following command. This can differ with different terminals used. List of different commands to activate listed [here](https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html).
@@ -30,10 +30,18 @@ Once the virtual environment is working properly, you should be able to see eith
 which pip
 ```
 
-The should look something like this `...\VitalSense\.venv/Scripts/pip` at the end. Alright, now that the virtual environment is looking good. Now it is time to get the required libraries installed. It should all be listed in the `requirements.txt` file and you just need to run the following command. 
+The should look something like this `...\VitalSense\.venv/Scripts/pip` at the end. Alright, now that the virtual environment is looking good. Now it is time to get the required libraries installed. It should all be listed in the `requirements.txt` file and you just need to run the following command.
 
 ``` terminal
 pip install -r requirements.txt
+```
+
+## How to run Flask server locally
+
+Once you have everything setup properly now you can run the Flask server locally by running the following command. Makesure you are inside the `src` folder.
+
+``` terminal
+flask --app app run
 ```
 
 [^git]: Use the following link to download [git and gitbash](https://git-scm.com/downloads).
