@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mywebsite</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /*CSs reset*/
+    body {
+      background-image: url("img/gympic.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 1500px;
+      color: white;
+    }
+    .left {
+      display: inline-block;
+      position: absolute;
+      left: 22px;
+      top: 12px;
+     
+    }
+    .mid {
+      display: block;
+      margin: 45px auto;
+      width: 37%;
+    
+    }
+    .right {
+      position: absolute;
+      right: 22px;
+      top: 12px;
+    }
+
+    .hi {
+      display: inline-block;
+      color: white;
+    }
+    .navbar {
+      position: sticky;
+    }
+    .navbar li a {
+      color: white;
+      text-decoration: none;
+      padding: 34px 24px;
+      font-size: 17px;
+    }
+    .navbar li a:hover,
+    .navbar li a.active {
+      text-decoration: underline;
+      color: aqua;
+    }
+    .left img {
+      width: 83px;
+    }
+    .left div {
+      text-align: center;
+    }
+    .right div a {
+      color: white;
+      text-decoration: none;
+    }
+    .right button {
+      margin: 2px 24px;
+      border-radius: 3px;
+      border: 1px solid red;
+    }
+    .right button a:hover{
+        color: black;
+    }
+
+    .right button a {
+      color: rgb(205, 25, 25);
+      text-decoration: none;
+    }
+    .right div a:hover {
+      color: gray;
+    }
+    .header {
+      position: sticky;
+      top: 2px;
+    }
+    
+  </style>
+  <body>
+    <header class="header">
+      <div class="left" id="12">
+        <img src="img/logo.jpg" alt="logo" />
+        <div>VitalSense</div>
+      </div>
+      <div class="mid" id="23">
+        <ul class="navbar">
+          <li class="hi"><a href="#" class="active">Home</a></li>
+          <li class="hi"><a href="#">About us</a></li>
+          <li class="hi"><a href="#">Resources</a></li>
+          <li class="hi"><a href="#">Contact Us</a></li>
+          </ul>
+          </div>
+      <div class="right" id="25">
+        <button><a href="">Login</a></button>
+        <div><a href="">Create Account</a></div>
+      </div>
+    </header>
+  </body>
+</html>
