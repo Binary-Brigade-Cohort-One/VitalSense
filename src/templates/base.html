@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>
+		{% block title %}
+			Home
+		{% endblock %}
+	</title>
+</head>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}"/>
+
+<header class="header">
+	{% if notLoggedin %}
+	<div class="left" id="12">
+		<img src="{{url_for('static',filename='img/logo.jpg')}}" alt="logo" />
+		<div>VitalSense</div>
+		</div>
+		<div class="mid" id="23">
+		<ul class="navbar">
+			<li class="hi"><a href="#" class="active">Home</a></li>
+			<li class="hi"><a href="#">About us</a></li>
+			<li class="hi"><a href="#">Resources</a></li>
+			<li class="hi"><a href="#">Contact Us</a></li>
+			</ul>
+			</div>
+		<div class="right" id="25">
+		<button><a href="">Login</a></button>
+		<div><a href="">Create Account</a></div>
+	</div>
+	{% else %}
+	<div class="left" id="12">
+		<img src="{{url_for('static',filename='img/logo.jpg')}}" alt="logo" />
+		<div>VitalSense</div>
+		</div>
+		<div class="mid" id="23">
+		<ul class="navbar">
+			<li class="hi"><a href="#" class="active">Home</a></li>
+			<li class="hi"><a href="#">About us</a></li>
+			<li class="hi"><a href="#">Resources</a></li>
+			<li class="hi"><a href="#">Contact Us</a></li>
+			</ul>
+			</div>
+		<div class="right" id="25">
+	</div>
+	{% endif %}
+</header>
+<body>
+	{% block body %}
+
+	{% endblock %}
+</body>
+</html>
