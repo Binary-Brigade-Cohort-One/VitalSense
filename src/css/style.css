@@ -12,7 +12,6 @@ body {
     position: absolute;
     left: 22px;
     top: 12px;
-   
   }
   .mid {
     display: block;
@@ -41,11 +40,13 @@ body {
   }
   .navbar li a:hover,
   .navbar li a.active {
-    text-decoration: underline;
+    text-decoration: none;
     color: aqua;
   }
   .left img {
-    width: 83px;
+    mix-blend-mode:multiply;
+    height:55px;
+    margin: 2px 3px;
   }
   .left div {
     text-align: center;
