@@ -1,0 +1,37 @@
+{%extends  'base.html'%}
+    {% block body%}
+    
+        <div class="container-md "> 
+           
+            <form  action="/login/{{alluser|length}}" method="Post" >
+             <h3 class="text-white">Login</h3>
+                <div class="col-md-4">
+                    <label for="email" class="form-label text-white" >Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class= "col-md-4">
+                    <label for="password" class="form-label text-white" >Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                 <div class="mt-2">
+                 <button type="submit" class=" btn btn-outline-info">Login</button>
+                 <a class="btn btn-outline-info" href="/" role="button">Home</a>
+                 </div>
+            </form>
+            {%if alluser|length !=0 and a>0 %}
+            <br>
+            <div class="alert alert-primary " role="alert">
+             Email id or password did not matched! Please create an account <a href="/createaccount/{{a|int}}">Create Account</a>
+          </div>
+         {% elif a==-1  %}
+         <br>
+         <div class="alert alert-primary " role="alert">
+         Email id or password did not matched! Please create an account <a href="/createaccount/{{(-a)|int}}">Create Account</a>
+         </div>
+          {% endif %}
+        </div>
+        
+    {% endblock body%}
+    
+

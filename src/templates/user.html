@@ -1,7 +1,113 @@
-<!doctype html>
-<title>Hello from Flask</title>
-{% if name %}
-  <h1>Hello {{ name }}!</h1>
-{% else %}
-  <h1>Hello, World!</h1>
-{% endif %}
+{%extends 'base2.html'%}
+{% block body%}
+<body>
+  {%if  user.datas|length !=0 and a==1%}
+    <div class="container mt-6">
+      <div class="row">
+        <div class="col">
+          <h3>Hello {{user.firstname}}! Here are Your Track Records! <a href="/user/{{2|int}}">Click Here to Add Another Day</a></h3>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-primary" href="/logout" role="button">Logout</a>
+        </div>
+      </div>
+    </div>
+    
+   <div>
+    {%for data in user.datas %}
+    <table class="table" width="1200">
+     <thead>
+       <tr>
+         <th scope="col">sno</th>
+         <th scope="col">Height(in ft)</th>
+         <th scope="col">Weight(kgs)</th>
+         <th scope="col">Calorie_burned(in num)</th>
+         <th scope="col">Sleep_Quality</th>
+         <th scope="col">Heartrate(in num)</th>
+         <th scope="col">Calori_intake(in num)</th>
+         <th scope="col">Hydration(in L)</th>
+         <th scope="col">Date</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <th scope="row">{{loop.index}}</th>
+         <td>{{data.Height }}</td>
+         <td>{{data.Weight }}</td>
+         <td>{{data.Calorie_burned}}</td>
+         <td>{{data.sleep_quality }}</td>
+         <td>{{data.Heartrate }}</td>
+         <td>{{data.Caloriintake}}</td>
+         <td>{{data.Hydration}}</td>
+         <td>{{data.date_created}}</td>
+         <td><button type="button" class="btn btn-outline-dark btn-sm" ><a class="text-decoration-none" href="/delete/{{data.id}}" role="button">Delete</a></button></td>
+         <td><button type="button" class="btn btn-outline-dark btn-sm" ><a class="text-decoration-none" href="/update/{{data.id}}" role="button">Update</a></button></td>
+       </tr>
+     </tbody>
+    </table>
+   </div>
+   {% endfor %}
+
+   {%else %}
+    {%if user.datas|length ==0%}
+   
+    <div class= "container ml-3">
+    <h1>Hello {{user.firstname}} You have no Track Record! Start tracking from today </h1>
+    </div>
+    <br>
+    
+    {%else%}
+    <div class="container justify-content-center  ">
+    <h1 > Add your another day here</h1>
+    </div>
+    {%endif%}
+    <div class="container justify-content-center " >
+    <form  action="/user/{{1|int}}" method='Post'>
+      <fieldset >
+      <div class="mb-3 col-6">
+        <label  class="form-label">Height(in foot)</label>
+        <input type="text" class="form-control" id="height" name="height" required>
+      </div>
+      <div class="mb-3 col-6">
+        <label class="form-label">Weight(in lb)</label>
+        <input type="number" class="form-control" id="weight"  name="weight" required>
+      </div>
+      <div class="mb-3  col-6">
+        <label  class="form-label">Calorie_burned(in numbers)</label>
+        <input type="number" class="form-control" id="calorie_burned" name='calorie_burned' required>
+      </div>
+      <div class="mb-3 col-6">
+        <label  class="form-label">Sleep_Quality</label>
+        <input type="text" class="form-control" id="sleepquality" name="sleepquality" required>
+      </div>
+      <div class="mb-3 col-6">
+        <label  class="form-label">Heartrate(in numbers)</label>
+        <input type="text" class="form-control" id="heartrate" name="heartrate" required>
+      </div>
+      <div class="mb-3  col-6">
+        <label  class="form-label">Calori_intake(in numbers)</label>
+        <input type="number" class="form-control" id="caloriintake" name="caloriintake" required>
+      </div>
+      <div class="mb-3  col-6">
+        <label  class="form-label">Hydration(in liters)</label>
+        <input type="number" class="form-control" id="hydration" name="hydration" required>
+      </div>
+    </fildset>
+      
+      <button type="submit" class="btn btn-primary">Add</button>
+      <a class="btn btn-primary" href="/" role="button">Home</a>
+    </div>
+    </form>
+    </div>
+     
+   {%endif%}
+  
+</body>
+{%endblock body%}
+
+
+
+
+
+
+

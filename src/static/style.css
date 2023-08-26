@@ -1,6 +1,6 @@
 /* CSS for html file  */
 body {
-    background-image: url("../img/gympic.jpg");
+    background-image: url("../static/gympic.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -44,7 +44,7 @@ body {
     color: aqua;
   }
   .left img {
-    mix-blend-mode:multiply;
+    mix-blend-mode:darken;
     height:55px;
     margin: 2px 3px;
   }
@@ -75,4 +75,13 @@ body {
     position: sticky;
     top: 2px;
   }
+
+  .text{
+    text-decoration: none;
+  }
+  .container{
+    font-family: 'Baloo 2', cursive;
+  }
+  
+
   

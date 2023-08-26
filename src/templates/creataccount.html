@@ -1,0 +1,79 @@
+{%extends  'base.html'%}
+  {% block body%}
+      <div class="container justify-content-center"> 
+        <div class= "content-section">
+        <form action="/createaccount/{{ alluser|length +2  }}" method="Post" >
+         <fieldset class="from-group col-md-4">
+          <Legend class ="mb-3 border-bottom text-white">Create Your Account</legend>
+            {% with messages= get_flashed_messages(with_categories=true) %}
+            {%if messages %}
+              {%for category, message in messages%}
+              {%if category== 'error' %}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+             {{message}}
+               <button type="button" class="close justify-content-end" data-dismiss="alert" aria-label="Close" style="outline: none;" >
+                 <span aria-hidden="true" >&times;</span>
+               </button>
+             </div>
+             
+              {%endif%}
+              {%endfor%}
+            {%endif%}
+           {% endwith %}
+        <div class="row ">
+            <div class="col-md-6">
+              <label class="form-label text-white" >Firstname</label>
+              <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" >
+             </div>
+            <div class="col">
+              <label  class="form-label text-white" >Lastname</label> 
+              <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" >        
+             </div>
+        </div>
+            <div class="mb-3 mt-3 form-group">
+            <label  class="form-label text-white" >Email address</label>
+            <input type="email" class="form-control form-control-sm" id="email" name="email" >
+            </div>
+            <div class="mb-3 form-group">
+            <label class="form-label text-white" >Password</label>
+            <input type="password" class="form-control form-control-sm" id="password" name="password" >
+            </div>
+
+          </fildset>
+
+            <div class="form-group">
+              <button type="submit" class=" btn btn-outline-info">Sign Up</button>
+            <a class="btn btn-outline-info" href="/" role="button">Home</a>
+          </div>
+        </form>
+      </div>
+       <div class="border-top col-md-4 mt-2">
+          <small class="text-white">
+            Already Have an Account? <a class="ml-2" href="{{url_for('login', a=0)}}">Sign In</a>
+            </small>
+
+            {% if alluser|length != 0 and a>0 and a==2 %}
+                <br>
+                <div class="alert alert-primary " role="alert">
+                    YOU have successfully created your account! To go back to home page click here <a href="/"><button type="button" class="btn btn-primary float-end ">Home</button></a>
+                </div> 
+            {% elif a==-1 %}
+                <div class="alert alert-primary " role="alert">
+                YOU already have an account with Us! To go back to home page click here <a href="/"><button type="button" class="btn btn-primary float-end ">Home</button></a>
+                </div>   
+            {% endif %}
+     </div>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              $('.alert').alert()
+            })
+          </script>
+ {% endblock body%}
+
+    
+      
+
+ 
+
