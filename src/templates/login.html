@@ -21,13 +21,13 @@
             </form>
             {%if alluser|length !=0 and a>0 %}
             <br>
-            <div class="alert alert-primary " role="alert">
-             Email id or password did not matched! Please create an account <a href="/createaccount/{{a|int}}">Create Account</a>
+            <div class="alert alert-primary col-4" role="alert">
+             Email id or password did not matched! <a href="/createaccount/{{a|int}}">Create Account</a>
           </div>
          {% elif a==-1  %}
          <br>
-         <div class="alert alert-primary " role="alert">
-         Email id or password did not matched! Please create an account <a href="/createaccount/{{(-a)|int}}">Create Account</a>
+         <div class="alert alert-primary col-4" role="alert">
+         Email id or password did not matched!  <a href="/createaccount/{{(-a)|int}}">Create Account</a>
          </div>
           {% endif %}
         </div>

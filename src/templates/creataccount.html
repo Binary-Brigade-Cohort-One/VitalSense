@@ -9,9 +9,9 @@
             {%if messages %}
               {%for category, message in messages%}
               {%if category== 'error' %}
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <div class="alert alert-danger justify-content-center" role="alert">
              {{message}}
-               <button type="button" class="close justify-content-end" data-dismiss="alert" aria-label="Close" style="outline: none;" >
+               <button type="button" class="close float-end " data-dismiss="alert" aria-label="Close" style="outline: none;" >
                  <span aria-hidden="true" >&times;</span>
                </button>
              </div>
@@ -21,22 +21,26 @@
             {%endif%}
            {% endwith %}
         <div class="row ">
-            <div class="col-md-6">
+            <div class="col-md-6 ">
               <label class="form-label text-white" >Firstname</label>
-              <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" >
+              <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" required>
              </div>
             <div class="col">
               <label  class="form-label text-white" >Lastname</label> 
-              <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" >        
+              <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" required>        
              </div>
         </div>
             <div class="mb-3 mt-3 form-group">
             <label  class="form-label text-white" >Email address</label>
-            <input type="email" class="form-control form-control-sm" id="email" name="email" >
+            <input type="email" class="form-control form-control-sm" id="email" name="email" required>
             </div>
             <div class="mb-3 form-group">
             <label class="form-label text-white" >Password</label>
-            <input type="password" class="form-control form-control-sm" id="password" name="password" >
+            <input type="password" class="form-control form-control-sm" id="password" name="password" required>
+            </div>
+            <div class="mb-3 form-group">
+            <label class="form-label text-white" >Re-Password</label>
+            <input type="password" class="form-control form-control-sm" id="repassword" name="repassword" required>
             </div>
 
           </fildset>
@@ -55,11 +59,11 @@
             {% if alluser|length != 0 and a>0 and a==2 %}
                 <br>
                 <div class="alert alert-primary " role="alert">
-                    YOU have successfully created your account! To go back to home page click here <a href="/"><button type="button" class="btn btn-primary float-end ">Home</button></a>
+                    YOU have successfully created your account!! 
                 </div> 
             {% elif a==-1 %}
                 <div class="alert alert-primary " role="alert">
-                YOU already have an account with Us! To go back to home page click here <a href="/"><button type="button" class="btn btn-primary float-end ">Home</button></a>
+                YOU already have an account with Us!!
                 </div>   
             {% endif %}
      </div>

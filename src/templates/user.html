@@ -4,11 +4,8 @@
   {%if  user.datas|length !=0 and a==1%}
     <div class="container mt-6">
       <div class="row">
-        <div class="col">
+        <div class="col ">
           <h3>Hello {{user.firstname}}! Here are Your Track Records! <a href="/user/{{2|int}}">Click Here to Add Another Day</a></h3>
-        </div>
-        <div class="col-auto">
-          <a class="btn btn-primary" href="/logout" role="button">Logout</a>
         </div>
       </div>
     </div>
@@ -51,30 +48,33 @@
    {%else %}
     {%if user.datas|length ==0%}
    
-    <div class= "container ml-3">
-    <h1>Hello {{user.firstname}} You have no Track Record! Start tracking from today </h1>
+    <div class= "container ml-3 mt-3">
+    <h4>Hello {{user.firstname}} You have no Track Record! Start tracking from today </h4>
     </div>
     <br>
     
     {%else%}
     <div class="container justify-content-center  ">
     <h1 > Add your another day here</h1>
-    </div>
+     </div>
     {%endif%}
-    <div class="container justify-content-center " >
-    <form  action="/user/{{1|int}}" method='Post'>
-      <fieldset >
+    <div class=" container d-flex" >
+
+    <div class=" container flex-md-row col-8">
+
+     <form  action="{{url_for('user', a=0)}}" method='Post'>
+      <fieldset class="col-10">
       <div class="mb-3 col-6">
         <label  class="form-label">Height(in foot)</label>
-        <input type="text" class="form-control" id="height" name="height" required>
+        <input type="number" step="any" class="form-control" id="height" name="height" required>
       </div>
       <div class="mb-3 col-6">
         <label class="form-label">Weight(in lb)</label>
-        <input type="number" class="form-control" id="weight"  name="weight" required>
+        <input type="number" step="any" class="form-control" id="weight"  name="weight" required>
       </div>
-      <div class="mb-3  col-6">
+      <div class="mb-3 col-6">
         <label  class="form-label">Calorie_burned(in numbers)</label>
-        <input type="number" class="form-control" id="calorie_burned" name='calorie_burned' required>
+        <input type="number" step="any" class="form-control" id="calorie_burned" name='calorie_burned' required>
       </div>
       <div class="mb-3 col-6">
         <label  class="form-label">Sleep_Quality</label>
@@ -82,22 +82,49 @@
       </div>
       <div class="mb-3 col-6">
         <label  class="form-label">Heartrate(in numbers)</label>
-        <input type="text" class="form-control" id="heartrate" name="heartrate" required>
+        <input type="text" step="any" class="form-control" id="heartrate" name="heartrate" required>
       </div>
       <div class="mb-3  col-6">
         <label  class="form-label">Calori_intake(in numbers)</label>
-        <input type="number" class="form-control" id="caloriintake" name="caloriintake" required>
+        <input type="number" step="any" class="form-control" id="caloriintake" name="caloriintake" required>
       </div>
-      <div class="mb-3  col-6">
+       <div class="mb-3  col-6">
         <label  class="form-label">Hydration(in liters)</label>
-        <input type="number" class="form-control" id="hydration" name="hydration" required>
+        <input type="number" step="any" class="form-control" id="hydration" name="hydration" required>
       </div>
     </fildset>
-      
       <button type="submit" class="btn btn-primary">Add</button>
-      <a class="btn btn-primary" href="/" role="button">Home</a>
-    </div>
     </form>
+  </div>
+
+    <div class="row border border-dark" >
+      <form action="/profile" >
+        <Legend class ="mb-3 border-bottom ">Your Profile</legend>
+          <div class="media mb-5" style="height:100px;">
+            <img class=" rounded-circle" style="height:100px;" src="{{image_file}}" alt="pp">
+            <div class="media-body mx-2">
+              <h5 >{{user.firstname}}</h5>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label " >Firstname</label>
+            <input  class="form-control form-control-sm" value="{{user.firstname}}" disabled>
+           </div>
+          <div class="col">
+            <label  class="form-label " >Lastname</label> 
+            <input  class="form-control form-control-sm"  value="{{user.lastname}}"  disabled>        
+           </div>
+        </div>
+          <div class="mb-3 mt-3 col form-group">
+          <label  class="form-label " >Email address</label>
+          <input class="form-control form-control-sm" value="{{user.email}}"id="email" name="email" disabled>
+          </div>
+          <div class="form-group">
+            <button type="submit" class=" btn btn-primary">UPDATE</button>
+          </div>
+      </form>
+   </div>
     </div>
      
    {%endif%}

@@ -1,0 +1,76 @@
+{%extends 'base2.html'%}
+{% block body%}
+    <div class="mt-4 border border-dark container justify-content-center col-6" >
+      <form action="/profile" method="Post" enctype="multipart/form-data">
+      
+        <Legend class ="mb-3 border-bottom ">UPDATE YOUR PROFILE</legend>
+          <div class="media mb-5" style="height:100px;">
+            <img class=" rounded-circle" style="height:100px;" src="{{image_file}}" alt="pp">
+            <div class="media-body">
+              <h5 class="mt-0">{{user.email}}</h5>
+            </div>
+          </div>
+          {% with messages= get_flashed_messages(with_categories=true) %}
+          {%if messages %}
+            {%for category, message in messages%}
+            {%if category== 'error' %}
+            <div class="alert alert-danger justify-content-center col-6" role="alert">
+             {{message}}
+             <button type="button" class="close float-end" data-dismiss="alert" aria-label="Close" >
+               <span class="float-end" aria-hidden="true" >&times;</span>
+             </button>
+            </div>
+             {%else%}
+             <div class="alert alert-success justify-content-center col-6" role="alert">
+               {{message}}
+                <button type="button" class="close float-end" data-dismiss="alert" aria-label="Close"  >
+                  <span  aria-hidden="true" >&times;</span>
+                </button>
+             </div>
+           
+            {%endif%}
+            {%endfor%}
+          {%endif%}
+         {% endwith %}
+
+        <div class="row">
+          <div class="col-3">
+            <label class="form-label " >Firstname</label>
+            <input type="text" class="form-control form-control-sm col-6" value="{{user.firstname}}"id="firstname" name="firstname" required>
+           </div>
+          <div class="col-3">
+            <label  class="form-label " >Lastname</label> 
+            <input type="text" class="form-control form-control-sm col-6" id="lastname" value="{{user.lastname}}" name="lastname" required>        
+           </div>
+        </div>
+          <div class="mb-3 mt-3 col-6 form-group">
+          <label  class="form-label" >Email address</label>
+          <input type="email" class="form-control form-control-sm " value="{{user.email}}" id="email" name="email" required>
+          </div>
+          <div class="d-flex flex-column form-group mb-3">
+            <label  class="form-label " >Update Profile Picture</label>
+            <input type="file" accept=".jpg,.png, .jpeg, .gif"  id='file' name='file' >
+          </div>
+          <div class="form-group mb-3">
+            <button type="submit" class=" btn btn-primary">UPDATE</button>
+          </div>
+      </form>
+   </div>
+ </div>
+ 
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+ <script>
+   document.addEventListener('DOMContentLoaded', () => {
+     $('.alert').alert()
+   })
+ </script>
+
+{%endblock body%}
+
+
+
+
+
+
+

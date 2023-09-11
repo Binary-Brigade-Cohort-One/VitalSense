@@ -1,51 +1,88 @@
 {%extends 'base2.html'%}
 {% block body %}
 <br>
-<br>
-<div class="container justify content-center border border-dark" >
+{%if user.weekli|length !=0 and count==1 %}
 
-<h3> Hi {{user.firstname}} Here is your weekly report.</h3>
-<table   bgcolor="black" width="900">
-    <tr bgcolor="grey" align="center">
-        <th width="300">Total Calorie Intake</th>
-        <th width="300">Average Wait</th>
-        <th width="300">Average Hydration</th> 
-    </tr>
-    <tr bgcolor= "lightgrey" align="center">
-        <td >{{week.weeklyCalorie}}</td>
-        <td >{{week.weeklyWeight}}</td>
-        <td >{{week.weeklyHydration}}</td> 
-    </tr>
-</table>
-<br>
-<br>
- <div class= "container my-6  ">
-    <div  class="card border border-dark" style="width: 30rem; height: 10rem;">
-      <div class="card-body ml-5 ">
-        {% if week.weeklyCalorie > 3000%}
-        <h6 class="card-text">!!!You consumed more calorie than needed</h6>
-        {% else %}
-        <h6 class="card-text">Good job! you have balanced carorie intake this week. </h6>
-        {%endif%}
+      <div class="float-center">
+        <h3>Hello {{user.firstname}}! Here are Your Weekly Reports! </h3>
+     </div>
+
+  <div>
+  {%for weeks in user.weekli %}
+    <table class="table" width="800">
+    <thead>
+      <tr>
+        <th scope="col">sno</th>
+        <th scope="col">Total Calorie Intake</th>
+        <th scope="col">Total water consumed</th>
+        <th scope="col">Average Wait</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{weeks. weeklyCalorie }} Cal</td>
+        <td>{{weeks.weeklyHydration }} L</td>
+        <td>{{weeks.weeklyWeight}} lb</td>
+        <td>{{weeks.date_created}}</td>
+      </tr>
+    </tbody>
+    </table>
+    </div>
+  {% endfor %}
+  
+ {% else %}
+  
+   <div class="container justify content-center border border-dark" >
+
+  <h3> Hi {{user.firstname}} Here is your weekly report.</h3>
+  <table   bgcolor="black" width="1200">
+    <thead>
+      <tr bgcolor="grey" align="center">
+          <th width="300">Total Calorie Intake</th>
+          <th width="300">Average Wait</th>
+          <th width="300">Average Hydration</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-white" align="center">
+        <td>{{week. weeklyCalorie }} Cal</td>
+        <td>{{week.weeklyWeight / 7 }} lb</td>
+        <td>{{week.weeklyHydration}} L</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <div class= "container my-6  ">
+      <div  class="card border border-dark" style="width: 30rem; height: 10rem;">
+        <div class="card-body ml-5 ">
+          {% if week.weeklyCalorie > 3000%}
+          <h6 class="card-text">!!!You consumed more calorie than needed</h6>
+          {% else %}
+          <h6 class="card-text">Good job! you have balanced carorie intake this week. </h6>
+          {%endif%}
+            <br>
+          {%if week.weeklyHydration <28%}
+          <h6 class="card-text">!!!Your water consumption rate is less this week </h6>
+          {% else %}
+          <h6 class="card-text">Keep it up!! water consumption is more than avegare. </h6>
+          {%endif%}
           <br>
-        {%if week.weeklyHydration <28%}
-        <h6 class="card-text">!!!Your water consumption rate is less this week </h6>
-        {% else %}
-        <h6 class="card-text">Keep it up!! water consumption is more than avegare. </h6>
-        {%endif%}
-        <br>
-        {%if avgidealWt<week.weeklyWeight %}
-        <h6 class="card-text">!!!You have gain {{week.weeklyWeight-avgidealWt}} kg weight this week approximately. </h6>
-        {% else %}
-        <h6 class="card-text">You have lost {{avgidealWt-week.weeklyWeight}} kg weight this week</h6>
-        {%endif%}
+          {%if avgidealWt<week.weeklyWeight %}
+          <h6 class="card-text">!!!You have gain {{week.weeklyWeight-avgidealWt}} lb weight this week approximately. </h6>
+          {% else %}
+          <h6 class="card-text">You have lost {{avgidealWt-week.weeklyWeight}} lb weight this week</h6>
+          {%endif%}
 
+        </div>
       </div>
     </div>
-  </div>
-    <br>
-     <div class="mt-1">
-     <a class="btn btn-outline-info mb-2" href="/" role="button">Home</a>
+      <br>
+      <div class="mt-1">
+      <a class="btn btn-outline-info mb-2" href="/" role="button">Home</a>
+      </div>
     </div>
-  </div>
+{%endif%}
 {% endblock body%}
