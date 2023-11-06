@@ -1,32 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mywebsite</title>
-  </head>
-  <link rel="stylesheet" href="../css/style.css" />
-  <style>
-    
-  </style>
-  <body>
+{% extends 'base.html' %} 
+
+  {% block body %}
+
     <header class="header">
       <div class="left" id="12">
-        <img src="../img/logo.jpg" alt="logo" />
-        <div>VitalSense</div>
+        <img src="../static/logo.jpg" alt="logo" />
+        <div class="firstdiv"><a href="/" class="text text-white" >VitalSense</a></div>
       </div>
       <div class="mid" id="23">
         <ul class="navbar">
-          <li class="hi"><a href="#" class="active">Home</a></li>
-          <li class="hi"><a href="#">About us</a></li>
-          <li class="hi"><a href="#">Resources</a></li>
-          <li class="hi"><a href="#">Contact Us</a></li>
-          </ul>
-          </div>
+          <li class="hi"><a href="/" class="active">Home</a></li>
+          <li class="hi"><a href="/">About us</a></li>
+          <li class="hi"><a href="/">Resources</a></li>
+          <li class="hi"><a href="/">Contact Us</a></li>
+        </ul>
+      </div>
       <div class="right" id="25">
-        <button><a href="">Login</a></button>
-        <div><a href="">Create Account</a></div>
+        <button><a href="/login/{{0|int}}">Login</a></button>
+        <div>
+          <a href="/createaccount/{{0|int}}" id="createaccount" name="createaccount"
+            >Create Account</a
+          >
+        </div>
       </div>
     </header>
-  </body>
-</html>
+    <body>
+      <br>
+      <br>
+      <br>
+      <div class= "container my-6 ">
+      <div class="card " style="width: 30rem; height: 10rem;">
+        <div class="card-body ml-5">
+          <h3 class="card-text">Hi There ! You can create your Account here and start tracking your health from today.</h3>
+        </div>
+      </div>
+    </div>
+
+    </body>
+ {% endblock body %}

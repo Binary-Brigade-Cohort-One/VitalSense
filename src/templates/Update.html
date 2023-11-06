@@ -1,0 +1,40 @@
+{% extends 'base2.html'%}
+
+{% block body%}
+ <div class ="container justify-content-center ">
+<h1> Update Here</h1>
+<form action="/update/{{id}}" method='Post'>
+    <div class="mb-3 col-6">
+      <label for="heightinput" class="form-label">Height(in foot)</label>
+      <input type="number" step="any" class="form-control" id="height" value="{{data.Height}}" name="height"  required>
+    </div>
+    <div class="mb-3 col-6">
+      <label for="weightinput" class="form-label">Weight(in kgs)</label>
+      <input type="number" step="any" class="form-control" id="weight" value="{{data.Weight}}" name="weight"  required>
+    </div>
+    <div class="mb-3 col-6">
+      <label  class="form-label">Calorie_burned(in numbers)</label>
+      <input type="number" step="any" class="form-control" id="Calorie_burned" value="{{data.Calorie_burned}}" name='Calorie_burned'  required>
+    </div>
+    <div class="mb-3 col-6">
+      <label class="form-label">Sleep_Quality</label>
+      <input type="text" class="form-control" id="sleepquality" value="{{data.sleep_quality}}" name="sleepquality"  required>
+    </div>
+    <div class="mb-3 col-6">
+      <label  class="form-label">Heartrate(in numbers)</label>
+      <input type="text" class="form-control" id="heartrate" value="{{data.Heartrate}}" name="heartrate"  required>
+    </div>
+    <div class="mb-3 col-6">
+      <label class="form-label">Calori_intake(in numbers)</label>
+      <input type="number" step="any" class="form-control" id="caloriintake" value="{{data.Caloriintake}}" name="caloriintake"  required>
+    </div>
+    <div class="mb-3 col-6">
+      <label class="form-label">Hydration(in liters)</label>
+      <input type="number" step="any" class="form-control" id="hydration" value="{{data.Hydration}}" name="hydration"  required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a class="btn btn-primary" href="{{url_for('user', a=1)}}" role="button">BACK</a>
+    </form>
+  </div>
+  {% endblock body%}

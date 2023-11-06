@@ -1,7 +1,140 @@
-<!doctype html>
-<title>Hello from Flask</title>
-{% if name %}
-  <h1>Hello {{ name }}!</h1>
-{% else %}
-  <h1>Hello, World!</h1>
-{% endif %}
+{%extends 'base2.html'%}
+{% block body%}
+<body>
+  {%if  user.datas|length !=0 and a==1%}
+    <div class="container mt-6">
+      <div class="row">
+        <div class="col ">
+          <h3>Hello {{user.firstname}}! Here are Your Track Records! <a href="/user/{{2|int}}">Click Here to Add Another Day</a></h3>
+        </div>
+      </div>
+    </div>
+    
+   <div>
+    {%for data in user.datas %}
+    <table class="table" width="1200">
+     <thead>
+       <tr>
+         <th scope="col">sno</th>
+         <th scope="col">Height(in ft)</th>
+         <th scope="col">Weight(kgs)</th>
+         <th scope="col">Calorie_burned(in num)</th>
+         <th scope="col">Sleep_Quality</th>
+         <th scope="col">Heartrate(in num)</th>
+         <th scope="col">Calori_intake(in num)</th>
+         <th scope="col">Hydration(in L)</th>
+         <th scope="col">Date</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <th scope="row">{{loop.index}}</th>
+         <td>{{data.Height }}</td>
+         <td>{{data.Weight }}</td>
+         <td>{{data.Calorie_burned}}</td>
+         <td>{{data.sleep_quality }}</td>
+         <td>{{data.Heartrate }}</td>
+         <td>{{data.Caloriintake}}</td>
+         <td>{{data.Hydration}}</td>
+         <td>{{data.date_created}}</td>
+         <td><button type="button" class="btn btn-outline-dark btn-sm" ><a class="text-decoration-none" href="/delete/{{data.id}}" role="button">Delete</a></button></td>
+         <td><button type="button" class="btn btn-outline-dark btn-sm" ><a class="text-decoration-none" href="/update/{{data.id}}" role="button">Update</a></button></td>
+       </tr>
+     </tbody>
+    </table>
+   </div>
+   {% endfor %}
+
+   {%else %}
+    {%if user.datas|length ==0%}
+   
+    <div class= "container ml-3 mt-3">
+    <h4>Hello {{user.firstname}} You have no Track Record! Start tracking from today </h4>
+    </div>
+    <br>
+    
+    {%else%}
+    <div class="container justify-content-center  ">
+    <h1 > Add your another day here</h1>
+     </div>
+    {%endif%}
+    <div class=" container d-flex" >
+
+    <div class=" container flex-md-row col-8">
+
+     <form  action="{{url_for('user', a=0)}}" method='Post'>
+      <fieldset class="col-10">
+      <div class="mb-3 col-6">
+        <label  class="form-label">Height(in foot)</label>
+        <input type="number" step="any" class="form-control" id="height" name="height" required>
+      </div>
+      <div class="mb-3 col-6">
+        <label class="form-label">Weight(in lb)</label>
+        <input type="number" step="any" class="form-control" id="weight"  name="weight" required>
+      </div>
+      <div class="mb-3 col-6">
+        <label  class="form-label">Calorie_burned(in numbers)</label>
+        <input type="number" step="any" class="form-control" id="calorie_burned" name='calorie_burned' required>
+      </div>
+      <div class="mb-3 col-6">
+        <label  class="form-label">Sleep_Quality</label>
+        <input type="text" class="form-control" id="sleepquality" name="sleepquality" required>
+      </div>
+      <div class="mb-3 col-6">
+        <label  class="form-label">Heartrate(in numbers)</label>
+        <input type="text" step="any" class="form-control" id="heartrate" name="heartrate" required>
+      </div>
+      <div class="mb-3  col-6">
+        <label  class="form-label">Calori_intake(in numbers)</label>
+        <input type="number" step="any" class="form-control" id="caloriintake" name="caloriintake" required>
+      </div>
+       <div class="mb-3  col-6">
+        <label  class="form-label">Hydration(in liters)</label>
+        <input type="number" step="any" class="form-control" id="hydration" name="hydration" required>
+      </div>
+    </fildset>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </div>
+
+    <div class="row border border-dark" >
+      <form action="/profile" >
+        <Legend class ="mb-3 border-bottom ">Your Profile</legend>
+          <div class="media mb-5" style="height:100px;">
+            <img class=" rounded-circle" style="height:100px;" src="{{image_file}}" alt="pp">
+            <div class="media-body mx-2">
+              <h5 >{{user.firstname}}</h5>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label " >Firstname</label>
+            <input  class="form-control form-control-sm" value="{{user.firstname}}" disabled>
+           </div>
+          <div class="col">
+            <label  class="form-label " >Lastname</label> 
+            <input  class="form-control form-control-sm"  value="{{user.lastname}}"  disabled>        
+           </div>
+        </div>
+          <div class="mb-3 mt-3 col form-group">
+          <label  class="form-label " >Email address</label>
+          <input class="form-control form-control-sm" value="{{user.email}}"id="email" name="email" disabled>
+          </div>
+          <div class="form-group">
+            <button type="submit" class=" btn btn-primary">UPDATE</button>
+          </div>
+      </form>
+   </div>
+    </div>
+     
+   {%endif%}
+  
+</body>
+{%endblock body%}
+
+
+
+
+
+
+

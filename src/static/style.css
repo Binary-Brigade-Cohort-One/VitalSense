@@ -1,0 +1,87 @@
+/* CSS for html file  */
+body {
+    background-image: url("../static/gympic.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 1500px;
+    color: white;
+  }
+  .left {
+    display: inline-block;
+    position: absolute;
+    left: 22px;
+    top: 12px;
+  }
+  .mid {
+    display: block;
+    margin: 45px auto;
+    width: 37%;
+  
+  }
+  .right {
+    position: absolute;
+    right: 22px;
+    top: 12px;
+  }
+
+  .hi {
+    display: inline-block;
+    color: white;
+  }
+  .navbar {
+    position: sticky;
+  }
+  .navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 34px 24px;
+    font-size: 17px;
+  }
+  .navbar li a:hover,
+  .navbar li a.active {
+    text-decoration: none;
+    color: aqua;
+  }
+  .left img {
+    mix-blend-mode:darken;
+    height:55px;
+    margin: 2px 3px;
+  }
+  .left div {
+    text-align: center;
+  }
+  .right div a {
+    color: white;
+    text-decoration: none;
+  }
+  .right button {
+    margin: 2px 24px;
+    border-radius: 3px;
+    border: 1px solid red;
+  }
+  .right button a:hover{
+      color: black;
+  }
+
+  .right button a {
+    color: rgb(205, 25, 25);
+    text-decoration: none;
+  }
+  .right div a:hover {
+    color: gray;
+  }
+  .header {
+    position: sticky;
+    top: 2px;
+  }
+
+  .text{
+    text-decoration: none;
+  }
+  .container{
+    font-family: 'Baloo 2', cursive;
+  }
+  
+
+  
