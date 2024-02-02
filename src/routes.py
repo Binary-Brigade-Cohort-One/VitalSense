@@ -5,10 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from src.models import USER , DATA, Weekly
 from src import db
 from werkzeug.utils import secure_filename
-import uuid as uuid
 import os
 from src import ALLOWED_EXTENSIONS
-
 
 
 
